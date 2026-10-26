@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tool Scout — Independent AI Tools Reviews & Comparisons (2026)</title>
+    <title>AI Tool Scout — Top AI Tools Directory & Reviews (2026)</title>
     <style>
         :root {
             --bg-dark: #0a0c10;
@@ -52,13 +52,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.2s;
         }
 
@@ -69,7 +70,7 @@
         header {
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 210, 255, 0.1));
             border-bottom: 1px solid var(--border-color);
-            padding: 60px 20px;
+            padding: 50px 20px;
             text-align: center;
         }
 
@@ -82,37 +83,43 @@
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 650px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto 0 auto;
             padding: 0 20px;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+        .category-block {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
             border-left: 4px solid var(--accent-purple);
             padding-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+            gap: 20px;
         }
 
         .tool-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 25px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -120,7 +127,7 @@
         }
 
         .tool-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--accent-purple);
         }
 
@@ -128,44 +135,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .tool-name {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
         }
 
         .badge {
             background-color: var(--badge-green);
             color: #fff;
-            font-size: 0.75rem;
-            padding: 4px 10px;
+            font-size: 0.7rem;
+            padding: 3px 8px;
             border-radius: 20px;
             font-weight: 600;
         }
 
         .rating {
             color: #ffb703;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .tool-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
 
         .features-list {
             list-style: none;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
             color: var(--text-main);
         }
 
         .features-list li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
         }
@@ -183,9 +191,10 @@
             background: linear-gradient(90deg, var(--accent-purple), #6366f1);
             color: #ffffff;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 8px;
             font-weight: bold;
+            font-size: 0.9rem;
             transition: opacity 0.2s ease;
         }
 
@@ -198,7 +207,7 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 30px;
-            margin-top: 40px;
+            margin-top: 50px;
             text-align: center;
         }
 
@@ -216,119 +225,398 @@
     <nav>
         <a href="#" class="logo">🔍 AI Tool Scout</a>
         <ul>
-            <li><a href="#voice">Voice AI</a></li>
+            <li><a href="#voice">Voice & Audio</a></li>
             <li><a href="#presentations">Presentations</a></li>
-            <li><a href="#video">Video & Design</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#video">Video & Motion</a></li>
+            <li><a href="#image">Image & Design</a></li>
+            <li><a href="#text">Text & Marketing</a></li>
+            <li><a href="#coding">Coding & Custom</a></li>
         </ul>
     </nav>
 
     <header>
         <h1>AI Tool Scout</h1>
-        <p>Independent reviews, comparisons, and workflows to supercharge your productivity with artificial intelligence.</p>
+        <p>Your ultimate directory for top-rated AI platforms in 2026. Hand-picked, tested, and ranked for creators, marketers, and businesses.</p>
     </header>
 
     <div class="container">
-        <h2 class="section-title">Top Recommended AI Platforms</h2>
 
-        <div class="tools-grid">
-            
-            <!-- TOOL 1: ELEVENLABS -->
-            <div class="tool-card" id="voice">
-                <div>
-                    <div class="card-header">
-                        <span class="tool-name">ElevenLabs</span>
-                        <span class="badge">Top Rated Voice AI</span>
+        <!-- KATEGORIE 1: VOICE & AUDIO -->
+        <div class="category-block" id="voice">
+            <h2 class="category-title">🎙️ Voice & Audio AI</h2>
+            <div class="tools-grid">
+                
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">ElevenLabs</span>
+                            <span class="badge">Top Voice AI</span>
+                        </div>
+                        <div class="rating">★ 4.9 / 5.0 — Best Speech Synthesis</div>
+                        <p class="tool-desc">Hyper-realistic text-to-speech, instant voice cloning, and multilingual video dubbing in 30+ languages.</p>
+                        <ul class="features-list">
+                            <li>Ultra-realistic human voices</li>
+                            <li>Instant voice cloning</li>
+                            <li>Multi-lingual video dubbing</li>
+                        </ul>
                     </div>
-                    <div class="rating">★ 4.9 / 5.0 (Speech Synthesis)</div>
-                    <p class="tool-desc">Industry-leading voice generator for realistic text-to-speech, voice cloning, and audio dubbing in 30+ languages.</p>
-                    <ul class="features-list">
-                        <li>Ultra-realistic human voices</li>
-                        <li>Instant voice cloning</li>
-                        <li>Multi-lingual video dubbing</li>
-                    </ul>
+                    <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="btn-affiliate" id="elevenlabs-link">Try ElevenLabs Free →</a>
                 </div>
-                <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="btn-affiliate" id="elevenlabs-link">Try ElevenLabs Free →</a>
-            </div>
 
-            <!-- TOOL 2: GAMMA APP -->
-            <div class="tool-card" id="presentations">
-                <div>
-                    <div class="card-header">
-                        <span class="tool-name">Gamma App</span>
-                        <span class="badge">Best for Presentations</span>
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Murf.ai</span>
+                            <span class="badge">Studio Voiceovers</span>
+                        </div>
+                        <div class="rating">★ 4.7 / 5.0 — Voice Studio</div>
+                        <p class="tool-desc">AI voice generator tailored for e-learning, podcasts, video presentations, and corporate videos.</p>
+                        <ul class="features-list">
+                            <li>120+ natural sounding voices</li>
+                            <li>Pitch & pitch timing controls</li>
+                            <li>Built-in audio soundtrack library</li>
+                        </ul>
                     </div>
-                    <div class="rating">★ 4.8 / 5.0 (AI Slide Builder)</div>
-                    <p class="tool-desc">A revolutionary design partner that creates beautiful presentations, documents, and webpages in seconds from simple prompts.</p>
-                    <ul class="features-list">
-                        <li>AI-generated slide decks & docs</li>
-                        <li>One-click layout redesigns</li>
-                        <li>Interactive web embeds</li>
-                    </ul>
+                    <a href="https://murf.ai" target="_blank" rel="noopener" class="btn-affiliate" id="murf-link">Explore Murf.ai →</a>
                 </div>
-                <a href="https://gamma.app" target="_blank" rel="noopener" class="btn-affiliate">Generate Deck with Gamma →</a>
-            </div>
 
-            <!-- TOOL 3: CAPCUT AI -->
-            <div class="tool-card" id="video">
-                <div>
-                    <div class="card-header">
-                        <span class="tool-name">CapCut AI</span>
-                        <span class="badge">Best Video Editor</span>
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Suno AI</span>
+                            <span class="badge">Music Generation</span>
+                        </div>
+                        <div class="rating">★ 4.8 / 5.0 — Song Maker</div>
+                        <p class="tool-desc">Generates full radio-quality songs with vocals and instruments from simple text prompts.</p>
+                        <ul class="features-list">
+                            <li>Full song creation with lyrics</li>
+                            <li>Multiple musical genres</li>
+                            <li>High quality audio output</li>
+                        </ul>
                     </div>
-                    <div class="rating">★ 4.7 / 5.0 (Shorts & Reels)</div>
-                    <p class="tool-desc">All-in-one video editing suite with smart AI features like auto-captions, background removal, and audio enhancement.</p>
-                    <ul class="features-list">
-                        <li>Auto-generated captions</li>
-                        <li>AI voiceovers & noise removal</li>
-                        <li>Viral short-form templates</li>
-                    </ul>
+                    <a href="https://suno.com" target="_blank" rel="noopener" class="btn-affiliate" id="suno-link">Try Suno AI →</a>
                 </div>
-                <a href="https://www.capcut.com" target="_blank" rel="noopener" class="btn-affiliate">Try CapCut Video AI →</a>
-            </div>
 
-            <!-- TOOL 4: MIDJOURNEY -->
-            <div class="tool-card">
-                <div>
-                    <div class="card-header">
-                        <span class="tool-name">Midjourney</span>
-                        <span class="badge">Best Image Generation</span>
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Play.ht</span>
+                            <span class="badge">Voice Generator</span>
+                        </div>
+                        <div class="rating">★ 4.6 / 5.0 — TTS Studio</div>
+                        <p class="tool-desc">AI voice generator offering over 900+ AI voices across 142 languages with conversational accents.</p>
+                        <ul class="features-list">
+                            <li>900+ AI voices & dialects</li>
+                            <li>Podcast audio host integration</li>
+                            <li>Commercial audio licensing</li>
+                        </ul>
                     </div>
-                    <div class="rating">★ 4.9 / 5.0 (Visuals & Art)</div>
-                    <p class="tool-desc">The most powerful AI image generator for photorealistic renders, artwork, concept design, and marketing graphics.</p>
-                    <ul class="features-list">
-                        <li>Photorealistic image quality</li>
-                        <li>Custom art styles & aspect ratios</li>
-                        <li>Vast creative community</li>
-                    </ul>
+                    <a href="https://play.ht" target="_blank" rel="noopener" class="btn-affiliate" id="playht-link">Try Play.ht →</a>
                 </div>
-                <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="btn-affiliate">Explore Midjourney →</a>
-            </div>
 
-            <!-- TOOL 5: CANVA AI -->
-            <div class="tool-card">
-                <div>
-                    <div class="card-header">
-                        <span class="tool-name">Canva Magic Studio</span>
-                        <span class="badge">Best All-in-One Design</span>
-                    </div>
-                    <div class="rating">★ 4.8 / 5.0 (Graphics)</div>
-                    <p class="tool-desc">All-in-one graphics suite enhanced with AI magic tools for image editing, magic expand, and social media content creation.</p>
-                    <ul class="features-list">
-                        <li>Magic Eraser & Background Removal</li>
-                        <li>Instant brand kit integration</li>
-                        <li>Thousands of ready-made templates</li>
-                    </ul>
-                </div>
-                <a href="https://www.canva.com" target="_blank" rel="noopener" class="btn-affiliate">Try Canva AI Tools →</a>
             </div>
-
         </div>
 
-        <div class="trust-section" id="about">
+        <!-- KATEGORIE 2: PRESENTATIONS & DOCUMENTS -->
+        <div class="category-block" id="presentations">
+            <h2 class="category-title">📊 Presentations & Documents</h2>
+            <div class="tools-grid">
+                
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Gamma App</span>
+                            <span class="badge">Best Slide Builder</span>
+                        </div>
+                        <div class="rating">★ 4.8 / 5.0 — AI Design Partner</div>
+                        <p class="tool-desc">Creates beautiful presentations, web documents, and slide decks in seconds from simple prompts.</p>
+                        <ul class="features-list">
+                            <li>One-click layout redesigns</li>
+                            <li>Interactive web embeds</li>
+                            <li>Export to PDF & PowerPoint</li>
+                        </ul>
+                    </div>
+                    <a href="https://gamma.app" target="_blank" rel="noopener" class="btn-affiliate" id="gamma-link">Generate Deck with Gamma →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Beautiful.ai</span>
+                            <span class="badge">Smart Presentations</span>
+                        </div>
+                        <div class="rating">★ 4.6 / 5.0 — Auto Design</div>
+                        <p class="tool-desc">Presentation software that automatically aligns elements and adjusts design rules in real-time.</p>
+                        <ul class="features-list">
+                            <li>Smart slide templates</li>
+                            <li>Automated layout formatting</li>
+                            <li>Team collaboration tools</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.beautiful.ai" target="_blank" rel="noopener" class="btn-affiliate" id="beautiful-link">Try Beautiful.ai →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Notion AI</span>
+                            <span class="badge">Workspace AI</span>
+                        </div>
+                        <div class="rating">★ 4.8 / 5.0 — Productivity</div>
+                        <p class="tool-desc">Integrated AI assistant for writing notes, summarizing long documents, and managing workspace tasks.</p>
+                        <ul class="features-list">
+                            <li>Instant document summaries</li>
+                            <li>AI writing & editing</li>
+                            <li>Q&A across your Notion workspace</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.notion.so" target="_blank" rel="noopener" class="btn-affiliate" id="notion-link">Try Notion AI →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- KATEGORIE 3: VIDEO & MOTION -->
+        <div class="category-block" id="video">
+            <h2 class="category-title">🎥 Video & Motion</h2>
+            <div class="tools-grid">
+                
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">CapCut AI</span>
+                            <span class="badge">Shorts & Reels</span>
+                        </div>
+                        <div class="rating">★ 4.7 / 5.0 — Video Editing</div>
+                        <p class="tool-desc">All-in-one video editing suite with smart AI features like auto-captions, background removal, and audio cleanup.</p>
+                        <ul class="features-list">
+                            <li>Auto-generated captions</li>
+                            <li>AI voiceovers & noise removal</li>
+                            <li>Short-form viral video templates</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.capcut.com" target="_blank" rel="noopener" class="btn-affiliate" id="capcut-link">Try CapCut AI →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Runway</span>
+                            <span class="badge">Gen-2 / Gen-3 Video</span>
+                        </div>
+                        <div class="rating">★ 4.8 / 5.0 — Video Generation</div>
+                        <p class="tool-desc">Pioneering AI video generator for creating cinematic clips, motion graphics, and visual effects from text/images.</p>
+                        <ul class="features-list">
+                            <li>Text-to-video synthesis</li>
+                            <li>Cinematic motion controls</li>
+                            <li>Inpainting & object removal</li>
+                        </ul>
+                    </div>
+                    <a href="https://runwayml.com" target="_blank" rel="noopener" class="btn-affiliate" id="runway-link">Explore Runway →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">HeyGen</span>
+                            <span class="badge">Best AI Avatars</span>
+                        </div>
+                        <div class="rating">★ 4.9 / 5.0 — Digital Humans</div>
+                        <p class="tool-desc">Generates realistic AI human avatars for video presentations, lip-syncing, and multi-lingual video translation.</p>
+                        <ul class="features-list">
+                            <li>Custom digital avatars</li>
+                            <li>Video translation with lip-sync</li>
+                            <li>Text-to-video scripting</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.heygen.com" target="_blank" rel="noopener" class="btn-affiliate" id="heygen-link">Try HeyGen Free →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- KATEGORIE 4: IMAGE & DESIGN -->
+        <div class="category-block" id="image">
+            <h2 class="category-title">🎨 Image & Design</h2>
+            <div class="tools-grid">
+                
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Midjourney</span>
+                            <span class="badge">Best Image Quality</span>
+                        </div>
+                        <div class="rating">★ 4.9 / 5.0 — Photorealism</div>
+                        <p class="tool-desc">The industry standard AI image generator for photorealistic renders, artwork, concept art, and graphics.</p>
+                        <ul class="features-list">
+                            <li>Photorealistic visual renders</li>
+                            <li>Custom art styles & ratios</li>
+                            <li>Active creative community</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="btn-affiliate" id="midjourney-link">Explore Midjourney →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Canva Magic Studio</span>
+                            <span class="badge">All-in-One Design</span>
+                        </div>
+                        <div class="rating">★ 4.8 / 5.0 — Graphics Suite</div>
+                        <p class="tool-desc">Graphic design platform boosted with AI magic tools for magic edit, background removal, and instant branding.</p>
+                        <ul class="features-list">
+                            <li>Magic Eraser & Background Removal</li>
+                            <li>Brand kit integration</li>
+                            <li>Millions of ready-made templates</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.canva.com" target="_blank" rel="noopener" class="btn-affiliate" id="canva-link">Try Canva AI →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Adobe Firefly</span>
+                            <span class="badge">Generative AI</span>
+                        </div>
+                        <div class="rating">★ 4.7 / 5.0 — Commercial Safe</div>
+                        <p class="tool-desc">Generative AI engine integrated directly into Photoshop and Illustrator for text effects and generative fill.</p>
+                        <ul class="features-list">
+                            <li>Commercially safe AI image training</li>
+                            <li>Generative Fill & Expand</li>
+                            <li>Vector graphic creation</li>
+                        </ul>
+                    </div>
+                    <a href="https://firefly.adobe.com" target="_blank" rel="noopener" class="btn-affiliate" id="firefly-link">Try Adobe Firefly →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- KATEGORIE 5: TEXT, SEARCH & MARKETING -->
+        <div class="category-block" id="text">
+            <h2 class="category-title">📝 Text, Search & Marketing</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">ChatGPT</span>
+                            <span class="badge">Best All-Rounder</span>
+                        </div>
+                        <div class="rating">★ 4.9 / 5.0 — General Assistant</div>
+                        <p class="tool-desc">OpenAI’s leading conversational AI model for brainstorming, writing, coding, data analysis, and automation.</p>
+                        <ul class="features-list">
+                            <li>GPT-4o multimodal model</li>
+                            <li>Custom GPT builders</li>
+                            <li>Code interpreter & file analysis</li>
+                        </ul>
+                    </div>
+                    <a href="https://chatgpt.com" target="_blank" rel="noopener" class="btn-affiliate" id="chatgpt-link">Try ChatGPT →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Claude 3.5</span>
+                            <span class="badge">Best for Writing</span>
+                        </div>
+                        <div class="rating">★ 4.9 / 5.0 — Nuanced AI</div>
+                        <p class="tool-desc">Anthropic’s advanced model renowned for natural writing tone, long document processing, and coding logic.</p>
+                        <ul class="features-list">
+                            <li>Artifacts visual preview workspace</li>
+                            <li>Exceptional coding capabilities</li>
+                            <li>Natural, non-robotic text tone</li>
+                        </ul>
+                    </div>
+                    <a href="https://claude.ai" target="_blank" rel="noopener" class="btn-affiliate" id="claude-link">Try Claude →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Perplexity AI</span>
+                            <span class="badge">AI Search Engine</span>
+                        </div>
+                        <div class="rating">★ 4.8 / 5.0 — Research</div>
+                        <p class="tool-desc">An answer engine that combines real-time web search with AI summarization and clear source citations.</p>
+                        <ul class="features-list">
+                            <li>Real-time web sources & links</li>
+                            <li>Pro search deep research</li>
+                            <li>Clean, ad-free interface</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="btn-affiliate" id="perplexity-link">Try Perplexity →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Jasper AI</span>
+                            <span class="badge">Marketing Copy</span>
+                        </div>
+                        <div class="rating">★ 4.7 / 5.0 — Brand Writing</div>
+                        <p class="tool-desc">AI copilot tailored for marketing teams, creating on-brand blog posts, ad copy, emails, and social campaigns.</p>
+                        <ul class="features-list">
+                            <li>Brand voice customization</li>
+                            <li>Marketing campaign workflows</li>
+                            <li>SEO optimization tools</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.jasper.ai" target="_blank" rel="noopener" class="btn-affiliate" id="jasper-link">Explore Jasper AI →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- KATEGORIE 6: CODING & CUSTOM -->
+        <div class="category-block" id="coding">
+            <h2 class="category-title">💻 Coding & Custom AI</h2>
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">GitHub Copilot / Cursor</span>
+                            <span class="badge">AI Coding</span>
+                        </div>
+                        <div class="rating">★ 4.9 / 5.0 — Developer AI</div>
+                        <p class="tool-desc">AI pair programmer that auto-completes code, writes tests, and refactors logic inside your IDE.</p>
+                        <ul class="features-list">
+                            <li>Context-aware code completion</li>
+                            <li>Multi-language support</li>
+                            <li>In-editor AI chat assistant</li>
+                        </ul>
+                    </div>
+                    <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="btn-affiliate" id="copilot-link">Try GitHub Copilot →</a>
+                </div>
+
+                <div class="tool-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="tool-name">Pickaxe</span>
+                            <span class="badge">No-Code Bots</span>
+                        </div>
+                        <div class="rating">★ 4.7 / 5.0 — AI Builder</div>
+                        <p class="tool-desc">No-code platform to build custom AI bots and embed them directly into websites or charge subscriptions.</p>
+                        <ul class="features-list">
+                            <li>No coding required</li>
+                            <li>Custom document training</li>
+                            <li>Embed bots on any website</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.pickaxe.co" target="_blank" rel="noopener" class="btn-affiliate" id="pickaxe-link">Build Bots with Pickaxe →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="trust-section">
             <h3>Why Trust AI Tool Scout?</h3>
-            <p style="color: var(--text-muted); margin-top: 10px;">We rigorously test dozens of AI platforms every month. Our mission is to feature only verified tools that deliver real-world efficiency, quality, and business value to creators, agencies, and small businesses.</p>
+            <p style="color: var(--text-muted); margin-top: 10px;">We rigorously evaluate dozens of artificial intelligence platforms every month. Our goal is to highlight only high-performing, verified software that provides real productivity value for creators, agencies, and online businesses.</p>
         </div>
+
     </div>
 
     <footer>
