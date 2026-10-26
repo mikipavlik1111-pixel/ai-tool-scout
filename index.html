@@ -272,105 +272,10 @@ footer p+p{margin-top:4px}
   </footer>
 </div>
 
+<!-- Propojení databáze -->
+<script src="tools.js"></script>
+
 <script>
-/* ---------- Data ---------- */
-const categories = [
-  { name: "Writing & Content", blurb: "Assistants and writing tools for drafting, editing and summarizing text." },
-  { name: "Image Generation & Design", blurb: "Tools for creating images and designing graphics." },
-  { name: "Video & Animation", blurb: "Tools for generating and editing video." },
-  { name: "Voice & Audio", blurb: "Tools for generating and processing speech and audio." },
-  { name: "Presentations", blurb: "Tools for building slide decks and similar documents." },
-  { name: "Productivity & Business", blurb: "Tools that fit into everyday work, notes and team documents." },
-  { name: "Coding & Development", blurb: "Assistants that help write, read and change code." },
-  { name: "Research & Education", blurb: "Tools for finding sources, answering questions and learning." }
-];
-
-const toolsData = [
-  { name: "ChatGPT", category: "Writing & Content", popular: true,
-    description: "OpenAI's chat assistant. Used for drafting and editing text, summarizing documents, answering questions and help with code.",
-    keywords: "chatbot assistant openai write email essay",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg", link: "https://chatgpt.com" },
-  { name: "Claude", category: "Writing & Content", popular: true,
-    description: "Anthropic's AI assistant. Handles writing, analysis and questions about long documents, and also helps with code.",
-    keywords: "chatbot assistant anthropic write summarize documents",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg", link: "https://claude.ai" },
-  { name: "Jasper", category: "Writing & Content",
-    description: "Writing platform aimed at marketing teams. Drafts blog posts, ads and social posts, and can follow a brand voice.",
-    keywords: "marketing copy blog social ads brand",
-    logo: "https://assets-global.website-files.com/60e5f2de0110ea61a2080a22/611b8b80b2a75c1c0d512a88_Jasper_Mark_Color.svg", link: "https://www.jasper.ai" },
-
-  { name: "Midjourney", category: "Image Generation & Design", popular: true,
-    description: "Creates images from text prompts. Commonly used for concept art, illustration and marketing visuals.",
-    keywords: "image generator art illustration picture text to image",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png", link: "https://www.midjourney.com" },
-  { name: "Canva", category: "Image Generation & Design", popular: true,
-    description: "Online design tool for social posts, presentations and print. Includes AI features such as background removal and image editing.",
-    keywords: "graphic design templates social media poster logo magic studio",
-    logo: "https://cdn.worldvectorlogo.com/logos/canva-1.svg", link: "https://www.canva.com" },
-  { name: "Adobe Firefly", category: "Image Generation & Design",
-    description: "Adobe's generative AI for creating and editing images, including generative fill and vector graphics. Works alongside Adobe apps.",
-    keywords: "adobe firefly generative fill vector illustrator photoshop image generator",
-    link: "https://www.adobe.com/products/firefly.html" },
-
-  { name: "Runway", category: "Video & Animation",
-    description: "Generates and edits video from text, images or existing footage. Aimed at filmmakers and video creators.",
-    keywords: "video generator film clips text to video motion gen-2",
-    logo: "https://runwayml.com/favicon.ico", link: "https://runwayml.com" },
-  { name: "CapCut", category: "Video & Animation", popular: true,
-    description: "Video editor for desktop and web with automatic captions, background removal and text-to-speech. Popular for short-form video.",
-    keywords: "video editor captions subtitles shorts reels tiktok",
-    logo: "https://lf16-capcut-tb.capcut.com/obj/capcut-online-tb/resource/image/icon_capcut.png", link: "https://www.capcut.com" },
-  { name: "HeyGen", category: "Video & Animation",
-    description: "Creates videos with AI avatars from a script, and can translate existing videos into other languages.",
-    keywords: "avatar presenter spokesperson video translation dubbing talking head",
-    link: "https://www.heygen.com" },
-
-  { name: "ElevenLabs", category: "Voice & Audio", popular: true,
-    description: "Turns text into spoken audio and can clone voices. Used for voiceovers, narration and audiobooks.",
-    keywords: "text to speech tts voice cloning narration voiceover audiobook",
-    logo: "https://cdn.worldvectorlogo.com/logos/elevenlabs.svg", link: "https://elevenlabs.io" },
-  { name: "Murf", category: "Voice & Audio",
-    description: "Turns scripts into voiceovers with a library of AI voices. Used for narration in videos, presentations and training material.",
-    keywords: "murf.ai text to speech voiceover narration studio",
-    link: "https://murf.ai" },
-  { name: "Suno", category: "Voice & Audio",
-    description: "Generates songs, with vocals and instruments, from a text description of the style or from your own lyrics.",
-    keywords: "suno ai music generator song lyrics composer",
-    link: "https://suno.com" },
-
-  { name: "Gamma", category: "Presentations", popular: true,
-    description: "Builds slide decks, documents and simple web pages from a text prompt. Useful for getting a first draft of a presentation.",
-    keywords: "slides deck powerpoint pitch presentation maker gamma app",
-    logo: "https://gamma.app/favicon.ico", link: "https://gamma.app" },
-  { name: "Beautiful.ai", category: "Presentations",
-    description: "Presentation software that applies design rules to your slides, so layouts stay tidy as you add and edit content.",
-    keywords: "slides deck powerpoint smart templates presentation maker",
-    link: "https://www.beautiful.ai" },
-
-  { name: "Notion AI", category: "Productivity & Business",
-    description: "AI features inside the Notion workspace. Summarizes notes, answers questions about your pages and drafts documents.",
-    keywords: "notes workspace wiki documentation summarize team",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg", link: "https://www.notion.so" },
-
-  { name: "GitHub Copilot", category: "Coding & Development",
-    description: "Suggests code as you type and answers questions inside code editors. Made for developers working in existing projects.",
-    keywords: "programming autocomplete ide developer refactor code assistant",
-    logo: "https://github.githubassets.com/assets/copilot-logo-6ef4d4ef7bf8.svg", link: "https://github.com/features/copilot" },
-  { name: "Cursor", category: "Coding & Development",
-    description: "Code editor with a built-in AI assistant that answers questions about your project and edits code for you.",
-    keywords: "cursor ai code editor ide programming developer",
-    link: "https://cursor.com" },
-  { name: "Pickaxe", category: "Coding & Development",
-    description: "Lets you build and publish your own AI chatbots and tools without writing code. Suited to non-developers.",
-    keywords: "no-code bot builder chatbot custom ai app agent",
-    link: "https://pickaxe.co" },
-
-  { name: "Perplexity", category: "Research & Education", popular: true,
-    description: "Search tool that answers questions in plain language and lists the web sources it used. Useful for quick research.",
-    keywords: "search engine answers citations sources study learn perplexity ai",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Perplexity_AI_logo.svg", link: "https://www.perplexity.ai" }
-];
-
 /* ---------- State ---------- */
 const ALL = "All AI Tools";
 let view = "home";
