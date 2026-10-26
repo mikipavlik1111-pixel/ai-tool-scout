@@ -1,628 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tool Scout — Top AI Tools Directory & Reviews (2026)</title>
-    <style>
-        :root {
-            --bg-dark: #0a0c10;
-            --card-bg: #161b22;
-            --border-color: #30363d;
-            --accent-purple: #8a2be2;
-            --accent-blue: #00d2ff;
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --badge-green: #238636;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tool Scout – Find the Best AI Tools for Your Needs</title>
+<meta name="description" content="AI Tool Scout helps you discover useful AI tools for work, creativity and everyday tasks. Browse categories and find the right tool.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317493f'/%3E%3Ccircle cx='14' cy='14' r='6.5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M19 19l6.5 6.5' stroke='%23fff' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M14 10.3l1.2 2.5 2.5 1.2-2.5 1.2L14 17.7l-1.2-2.5-2.5-1.2 2.5-1.2z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f6f5f1;
+  --surface:#ffffff;
+  --ink:#1b1f23;
+  --ink-2:#4a5058;
+  --ink-3:#737982;
+  --line:#e2e0d9;
+  --line-strong:#cfccc2;
+  --accent:#17493f;
+  --accent-hover:#0f352e;
+  --accent-soft:#e6efec;
+  --logo-bg:#f1f0ec;
+  --focus:#1d6fd6;
+  --sidebar-w:272px;
+  --radius:8px;
+  --font:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+[hidden]{display:none!important}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+/* Sidebar */
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:60;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:22px 20px 18px;text-decoration:none;color:var(--ink)}
+.brand-mark{width:32px;height:32px;flex:none;display:block}
+.brand-name{font-weight:700;font-size:18px;letter-spacing:-.01em}
+.nav-label{padding:10px 20px 8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.nav-home{padding:0 12px 6px}
+.cat-list{list-style:none;padding:0 12px 20px}
+.cat-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border:0;border-left:3px solid transparent;border-radius:0 6px 6px 0;background:none;cursor:pointer;text-align:left;font-size:14.5px;color:var(--ink-2)}
+.cat-btn:hover{background:var(--bg);color:var(--ink)}
+.cat-btn[aria-current="true"]{background:var(--accent-soft);border-left-color:var(--accent);color:var(--accent);font-weight:600}
+.cat-count{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.cat-btn[aria-current="true"] .cat-count{color:var(--accent)}
+.nav-sep{height:1px;background:var(--line);margin:10px 20px 4px}
+.sidebar-note{margin-top:auto;padding:16px 20px 20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }
+/* Mobile bar */
+.mobile-bar{display:none}
+.scrim{display:none}
 
-        nav {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+/* Main */
+.main{margin-left:var(--sidebar-w);min-height:100vh;display:flex;flex-direction:column}
+.main-inner{width:100%;max-width:1180px;padding:40px 40px 56px;flex:1}
 
-        nav .logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            text-decoration: none;
-        }
+/* Homepage */
+.hero{padding:16px 0 48px;border-bottom:1px solid var(--line-strong)}
+.hero h1{font-size:40px;line-height:1.15;letter-spacing:-.025em;font-weight:700;max-width:720px}
+.hero p{margin-top:16px;color:var(--ink-2);font-size:17px;line-height:1.6;max-width:680px}
+.hero-search{display:flex;gap:8px;margin-top:28px;max-width:680px}
+.hero-search label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hero-search .field{position:relative;flex:1}
+.hero-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+.hero-search input{width:100%;height:52px;padding:0 16px 0 42px;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius);font-size:16px}
+.hero-search input::placeholder{color:var(--ink-3)}
+.hero-search input:focus{outline:2px solid var(--focus);outline-offset:0;border-color:var(--focus)}
+.hero-search button{height:52px;padding:0 24px;border:0;border-radius:var(--radius);background:var(--accent);color:#fff;font-weight:600;font-size:15px;cursor:pointer}
+.hero-search button:hover{background:var(--accent-hover)}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.home-section{padding-top:48px}
+.home-section+.home-section{margin-top:48px;border-top:1px solid var(--line-strong)}
+.section-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:20px}
+.section-row h2{font-size:24px;letter-spacing:-.015em;font-weight:700}
+.text-link{font-size:15px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.text-link:hover{text-decoration:underline}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.benefit{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius);padding:20px}
+.benefit h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.benefit p{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
+/* Directory */
+.page-head{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end;padding-bottom:24px;border-bottom:1px solid var(--line-strong)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.page-head h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700}
+.page-head p{margin-top:6px;color:var(--ink-2);font-size:15px;max-width:520px}
+.search{position:relative;flex:1 1 300px;max-width:400px}
+.search label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+.search input{width:100%;height:44px;padding:0 40px 0 38px;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius);font-size:15px}
+.search input::placeholder{color:var(--ink-3)}
+.search input:focus{outline:2px solid var(--focus);outline-offset:0;border-color:var(--focus)}
+.clear-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;background:none;border-radius:6px;cursor:pointer;color:var(--ink-3);font-size:20px;line-height:1;display:none}
+.clear-btn:hover{background:var(--bg);color:var(--ink)}
+.search.has-value .clear-btn{display:block}
 
-        nav a:hover {
-            color: var(--text-main);
-        }
+.result-line{margin:20px 0 4px;font-size:14px;color:var(--ink-3)}
 
-        header {
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 210, 255, 0.1));
-            border-bottom: 1px solid var(--border-color);
-            padding: 50px 20px;
-            text-align: center;
-        }
+/* Category sections */
+.cat-section{padding-top:36px}
+.cat-section:first-of-type{padding-top:20px}
+.cat-section+.cat-section{margin-top:36px;border-top:1px solid var(--line-strong)}
+.cat-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.cat-head h2{font-size:21px;letter-spacing:-.01em;font-weight:700}
+.cat-head .n{font-size:14px;color:var(--ink-3)}
+.cat-blurb{color:var(--ink-2);font-size:14.5px;margin-bottom:20px;max-width:640px}
 
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, #a855f7, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* Grid and cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;height:244px;display:grid;grid-template-rows:48px 1fr 40px;gap:14px}
+.card:hover{border-color:var(--line-strong)}
+.card-top{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{width:48px;height:48px;flex:none;border-radius:var(--radius);background:var(--logo-bg);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;padding:7px}
+.logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+.logo .mono{font-weight:700;font-size:19px;color:var(--ink-2)}
+.card-id{min-width:0}
+.card-name{font-size:16px;font-weight:600;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-cat{font-size:12.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.card-desc{font-size:14px;line-height:1.55;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;width:100%;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.btn:hover{background:var(--accent-hover)}
+.btn svg{flex:none}
 
-        header p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto;
-        }
+/* Empty */
+.empty{margin-top:28px;padding:56px 24px;text-align:center;background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius)}
+.empty h2{font-size:18px;margin-bottom:6px}
+.empty p{color:var(--ink-2);font-size:14.5px;max-width:420px;margin:0 auto 18px}
+.btn-outline{height:38px;padding:0 16px;border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;cursor:pointer;font-size:14px;font-weight:600}
+.btn-outline:hover{background:var(--bg)}
 
-        .container {
-            max-width: 1200px;
-            margin: 40px auto 0 auto;
-            padding: 0 20px;
-        }
+footer{border-top:1px solid var(--line);padding:22px 40px;font-size:13px;color:var(--ink-3);background:var(--surface)}
+footer p+p{margin-top:4px}
 
-        .category-block {
-            margin-bottom: 50px;
-        }
-
-        .category-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-purple);
-            padding-left: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .tool-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-purple);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .tool-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        .badge {
-            background-color: var(--badge-green);
-            color: #fff;
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        .rating {
-            color: #ffb703;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .tool-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            color: var(--text-main);
-        }
-
-        .features-list li {
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-        }
-
-        .features-list li::before {
-            content: "✓";
-            color: #2ea043;
-            margin-right: 8px;
-            font-weight: bold;
-        }
-
-        .btn-affiliate {
-            display: block;
-            text-align: center;
-            background: linear-gradient(90deg, var(--accent-purple), #6366f1);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: opacity 0.2s ease;
-        }
-
-        .btn-affiliate:hover {
-            opacity: 0.9;
-        }
-
-        .trust-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            padding: 0 20px;
-        }
-    </style>
+/* Tablet and mobile */
+@media (max-width:1100px){
+  .benefits{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .sidebar{transform:translateX(-100%);transition:transform .2s ease;width:292px}
+  .sidebar.open{transform:none;box-shadow:0 10px 40px rgba(0,0,0,.2)}
+  .scrim{position:fixed;inset:0;background:rgba(20,24,28,.4);z-index:55}
+  .scrim.show{display:block}
+  .mobile-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 16px}
+  .mobile-bar .brand{padding:0}
+  .menu-btn{height:40px;padding:0 14px;border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .main{margin-left:0}
+  .main-inner{padding:24px 16px 40px}
+  .hero{padding-bottom:36px}
+  .hero h1{font-size:32px}
+  .page-head h1{font-size:24px}
+  .search{max-width:none;flex-basis:100%}
+  footer{padding:20px 16px}
+}
+@media (max-width:560px){
+  .hero h1{font-size:28px}
+  .hero p{font-size:16px}
+  .hero-search{flex-direction:column}
+  .hero-search button{width:100%}
+  .benefits{grid-template-columns:1fr}
+  .section-row h2{font-size:21px}
+}
+@media (max-width:480px){
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">🔍 AI Tool Scout</a>
-        <ul>
-            <li><a href="#voice">Voice & Audio</a></li>
-            <li><a href="#presentations">Presentations</a></li>
-            <li><a href="#video">Video & Motion</a></li>
-            <li><a href="#image">Image & Design</a></li>
-            <li><a href="#text">Text & Marketing</a></li>
-            <li><a href="#coding">Coding & Custom</a></li>
-        </ul>
-    </nav>
+<!-- Logo symbol: magnifier with a four-point spark. Colors: --accent and white. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-mark" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="7" fill="#17493f"/>
+    <circle cx="14" cy="14" r="6.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+    <path d="M19 19l6.5 6.5" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M14 10.3l1.2 2.5 2.5 1.2-2.5 1.2L14 17.7l-1.2-2.5-2.5-1.2 2.5-1.2z" fill="#fff"/>
+  </symbol>
+</svg>
 
-    <header>
-        <h1>AI Tool Scout</h1>
-        <p>Your ultimate directory for top-rated AI platforms in 2026. Hand-picked, tested, and ranked for creators, marketers, and businesses.</p>
-    </header>
+<div class="scrim" id="scrim"></div>
 
-    <div class="container">
+<aside class="sidebar" id="sidebar" aria-label="Site navigation">
+  <a class="brand" href="#home" data-home aria-label="AI Tool Scout – go to homepage">
+    <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+    <span class="brand-name">AI Tool Scout</span>
+  </a>
+  <div class="nav-home"><button class="cat-btn" type="button" id="nav-home-btn" data-view="home"><span>Home</span></button></div>
+  <div class="nav-sep"></div>
+  <div class="nav-label" id="nav-label">Categories</div>
+  <nav aria-labelledby="nav-label">
+    <ul class="cat-list" id="cat-list"></ul>
+  </nav>
+  <p class="sidebar-note">An independent directory. Each listing links to the tool's own website.</p>
+</aside>
 
-        <!-- KATEGORIE 1: VOICE & AUDIO -->
-        <div class="category-block" id="voice">
-            <h2 class="category-title">🎙️ Voice & Audio AI</h2>
-            <div class="tools-grid">
-                
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">ElevenLabs</span>
-                            <span class="badge">Top Voice AI</span>
-                        </div>
-                        <div class="rating">★ 4.9 / 5.0 — Best Speech Synthesis</div>
-                        <p class="tool-desc">Hyper-realistic text-to-speech, instant voice cloning, and multilingual video dubbing in 30+ languages.</p>
-                        <ul class="features-list">
-                            <li>Ultra-realistic human voices</li>
-                            <li>Instant voice cloning</li>
-                            <li>Multi-lingual video dubbing</li>
-                        </ul>
-                    </div>
-                    <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="btn-affiliate" id="elevenlabs-link">Try ElevenLabs Free →</a>
-                </div>
+<div class="mobile-bar">
+  <a class="brand" href="#home" data-home aria-label="AI Tool Scout – go to homepage">
+    <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+    <span class="brand-name">AI Tool Scout</span>
+  </a>
+  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    Menu
+  </button>
+</div>
 
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Murf.ai</span>
-                            <span class="badge">Studio Voiceovers</span>
-                        </div>
-                        <div class="rating">★ 4.7 / 5.0 — Voice Studio</div>
-                        <p class="tool-desc">AI voice generator tailored for e-learning, podcasts, video presentations, and corporate videos.</p>
-                        <ul class="features-list">
-                            <li>120+ natural sounding voices</li>
-                            <li>Pitch & pitch timing controls</li>
-                            <li>Built-in audio soundtrack library</li>
-                        </ul>
-                    </div>
-                    <a href="https://murf.ai" target="_blank" rel="noopener" class="btn-affiliate" id="murf-link">Explore Murf.ai →</a>
-                </div>
+<div class="main">
+  <div class="main-inner">
 
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Suno AI</span>
-                            <span class="badge">Music Generation</span>
-                        </div>
-                        <div class="rating">★ 4.8 / 5.0 — Song Maker</div>
-                        <p class="tool-desc">Generates full radio-quality songs with vocals and instruments from simple text prompts.</p>
-                        <ul class="features-list">
-                            <li>Full song creation with lyrics</li>
-                            <li>Multiple musical genres</li>
-                            <li>High quality audio output</li>
-                        </ul>
-                    </div>
-                    <a href="https://suno.com" target="_blank" rel="noopener" class="btn-affiliate" id="suno-link">Try Suno AI →</a>
-                </div>
+    <!-- HOMEPAGE VIEW -->
+    <div id="home-view">
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Find the Best AI Tools for Your Needs</h1>
+        <p>AI Tool Scout helps you discover useful AI tools for work, creativity and everyday tasks. Browse carefully organized categories, compare different tools and find the right solution for your needs — all in one place.</p>
+        <form class="hero-search" id="hero-form" role="search">
+          <div class="field">
+            <label for="hero-search">Search AI tools</label>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="hero-search" type="search" placeholder="Search for AI tools, categories or use cases…" autocomplete="off">
+          </div>
+          <button type="submit">Search</button>
+        </form>
+      </section>
 
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Play.ht</span>
-                            <span class="badge">Voice Generator</span>
-                        </div>
-                        <div class="rating">★ 4.6 / 5.0 — TTS Studio</div>
-                        <p class="tool-desc">AI voice generator offering over 900+ AI voices across 142 languages with conversational accents.</p>
-                        <ul class="features-list">
-                            <li>900+ AI voices & dialects</li>
-                            <li>Podcast audio host integration</li>
-                            <li>Commercial audio licensing</li>
-                        </ul>
-                    </div>
-                    <a href="https://play.ht" target="_blank" rel="noopener" class="btn-affiliate" id="playht-link">Try Play.ht →</a>
-                </div>
-
-            </div>
+      <section class="home-section" aria-labelledby="benefits-title">
+        <div class="section-row"><h2 id="benefits-title">Why use AI Tool Scout</h2></div>
+        <div class="benefits">
+          <div class="benefit"><h3>Discover AI Tools</h3><p>Explore tools for writing, images, video, audio, productivity and more.</p></div>
+          <div class="benefit"><h3>Browse by Category</h3><p>Find the right tool without searching through hundreds of unrelated options.</p></div>
+          <div class="benefit"><h3>Choose with Confidence</h3><p>Read clear descriptions to understand what each tool does and who it is for.</p></div>
+          <div class="benefit"><h3>Save Time</h3><p>Find useful tools for your work, studies, business or creative projects.</p></div>
         </div>
+      </section>
 
-        <!-- KATEGORIE 2: PRESENTATIONS & DOCUMENTS -->
-        <div class="category-block" id="presentations">
-            <h2 class="category-title">📊 Presentations & Documents</h2>
-            <div class="tools-grid">
-                
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Gamma App</span>
-                            <span class="badge">Best Slide Builder</span>
-                        </div>
-                        <div class="rating">★ 4.8 / 5.0 — AI Design Partner</div>
-                        <p class="tool-desc">Creates beautiful presentations, web documents, and slide decks in seconds from simple prompts.</p>
-                        <ul class="features-list">
-                            <li>One-click layout redesigns</li>
-                            <li>Interactive web embeds</li>
-                            <li>Export to PDF & PowerPoint</li>
-                        </ul>
-                    </div>
-                    <a href="https://gamma.app" target="_blank" rel="noopener" class="btn-affiliate" id="gamma-link">Generate Deck with Gamma →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Beautiful.ai</span>
-                            <span class="badge">Smart Presentations</span>
-                        </div>
-                        <div class="rating">★ 4.6 / 5.0 — Auto Design</div>
-                        <p class="tool-desc">Presentation software that automatically aligns elements and adjusts design rules in real-time.</p>
-                        <ul class="features-list">
-                            <li>Smart slide templates</li>
-                            <li>Automated layout formatting</li>
-                            <li>Team collaboration tools</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.beautiful.ai" target="_blank" rel="noopener" class="btn-affiliate" id="beautiful-link">Try Beautiful.ai →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Notion AI</span>
-                            <span class="badge">Workspace AI</span>
-                        </div>
-                        <div class="rating">★ 4.8 / 5.0 — Productivity</div>
-                        <p class="tool-desc">Integrated AI assistant for writing notes, summarizing long documents, and managing workspace tasks.</p>
-                        <ul class="features-list">
-                            <li>Instant document summaries</li>
-                            <li>AI writing & editing</li>
-                            <li>Q&A across your Notion workspace</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.notion.so" target="_blank" rel="noopener" class="btn-affiliate" id="notion-link">Try Notion AI →</a>
-                </div>
-
-            </div>
+      <section class="home-section" aria-labelledby="popular-title">
+        <div class="section-row">
+          <h2 id="popular-title">Popular AI Tools</h2>
+          <a class="text-link" href="#all" data-go="all">View All Tools &rarr;</a>
         </div>
-
-        <!-- KATEGORIE 3: VIDEO & MOTION -->
-        <div class="category-block" id="video">
-            <h2 class="category-title">🎥 Video & Motion</h2>
-            <div class="tools-grid">
-                
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">CapCut AI</span>
-                            <span class="badge">Shorts & Reels</span>
-                        </div>
-                        <div class="rating">★ 4.7 / 5.0 — Video Editing</div>
-                        <p class="tool-desc">All-in-one video editing suite with smart AI features like auto-captions, background removal, and audio cleanup.</p>
-                        <ul class="features-list">
-                            <li>Auto-generated captions</li>
-                            <li>AI voiceovers & noise removal</li>
-                            <li>Short-form viral video templates</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.capcut.com" target="_blank" rel="noopener" class="btn-affiliate" id="capcut-link">Try CapCut AI →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Runway</span>
-                            <span class="badge">Gen-2 / Gen-3 Video</span>
-                        </div>
-                        <div class="rating">★ 4.8 / 5.0 — Video Generation</div>
-                        <p class="tool-desc">Pioneering AI video generator for creating cinematic clips, motion graphics, and visual effects from text/images.</p>
-                        <ul class="features-list">
-                            <li>Text-to-video synthesis</li>
-                            <li>Cinematic motion controls</li>
-                            <li>Inpainting & object removal</li>
-                        </ul>
-                    </div>
-                    <a href="https://runwayml.com" target="_blank" rel="noopener" class="btn-affiliate" id="runway-link">Explore Runway →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">HeyGen</span>
-                            <span class="badge">Best AI Avatars</span>
-                        </div>
-                        <div class="rating">★ 4.9 / 5.0 — Digital Humans</div>
-                        <p class="tool-desc">Generates realistic AI human avatars for video presentations, lip-syncing, and multi-lingual video translation.</p>
-                        <ul class="features-list">
-                            <li>Custom digital avatars</li>
-                            <li>Video translation with lip-sync</li>
-                            <li>Text-to-video scripting</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.heygen.com" target="_blank" rel="noopener" class="btn-affiliate" id="heygen-link">Try HeyGen Free →</a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- KATEGORIE 4: IMAGE & DESIGN -->
-        <div class="category-block" id="image">
-            <h2 class="category-title">🎨 Image & Design</h2>
-            <div class="tools-grid">
-                
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Midjourney</span>
-                            <span class="badge">Best Image Quality</span>
-                        </div>
-                        <div class="rating">★ 4.9 / 5.0 — Photorealism</div>
-                        <p class="tool-desc">The industry standard AI image generator for photorealistic renders, artwork, concept art, and graphics.</p>
-                        <ul class="features-list">
-                            <li>Photorealistic visual renders</li>
-                            <li>Custom art styles & ratios</li>
-                            <li>Active creative community</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="btn-affiliate" id="midjourney-link">Explore Midjourney →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Canva Magic Studio</span>
-                            <span class="badge">All-in-One Design</span>
-                        </div>
-                        <div class="rating">★ 4.8 / 5.0 — Graphics Suite</div>
-                        <p class="tool-desc">Graphic design platform boosted with AI magic tools for magic edit, background removal, and instant branding.</p>
-                        <ul class="features-list">
-                            <li>Magic Eraser & Background Removal</li>
-                            <li>Brand kit integration</li>
-                            <li>Millions of ready-made templates</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.canva.com" target="_blank" rel="noopener" class="btn-affiliate" id="canva-link">Try Canva AI →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Adobe Firefly</span>
-                            <span class="badge">Generative AI</span>
-                        </div>
-                        <div class="rating">★ 4.7 / 5.0 — Commercial Safe</div>
-                        <p class="tool-desc">Generative AI engine integrated directly into Photoshop and Illustrator for text effects and generative fill.</p>
-                        <ul class="features-list">
-                            <li>Commercially safe AI image training</li>
-                            <li>Generative Fill & Expand</li>
-                            <li>Vector graphic creation</li>
-                        </ul>
-                    </div>
-                    <a href="https://firefly.adobe.com" target="_blank" rel="noopener" class="btn-affiliate" id="firefly-link">Try Adobe Firefly →</a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- KATEGORIE 5: TEXT, SEARCH & MARKETING -->
-        <div class="category-block" id="text">
-            <h2 class="category-title">📝 Text, Search & Marketing</h2>
-            <div class="tools-grid">
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">ChatGPT</span>
-                            <span class="badge">Best All-Rounder</span>
-                        </div>
-                        <div class="rating">★ 4.9 / 5.0 — General Assistant</div>
-                        <p class="tool-desc">OpenAI’s leading conversational AI model for brainstorming, writing, coding, data analysis, and automation.</p>
-                        <ul class="features-list">
-                            <li>GPT-4o multimodal model</li>
-                            <li>Custom GPT builders</li>
-                            <li>Code interpreter & file analysis</li>
-                        </ul>
-                    </div>
-                    <a href="https://chatgpt.com" target="_blank" rel="noopener" class="btn-affiliate" id="chatgpt-link">Try ChatGPT →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Claude 3.5</span>
-                            <span class="badge">Best for Writing</span>
-                        </div>
-                        <div class="rating">★ 4.9 / 5.0 — Nuanced AI</div>
-                        <p class="tool-desc">Anthropic’s advanced model renowned for natural writing tone, long document processing, and coding logic.</p>
-                        <ul class="features-list">
-                            <li>Artifacts visual preview workspace</li>
-                            <li>Exceptional coding capabilities</li>
-                            <li>Natural, non-robotic text tone</li>
-                        </ul>
-                    </div>
-                    <a href="https://claude.ai" target="_blank" rel="noopener" class="btn-affiliate" id="claude-link">Try Claude →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Perplexity AI</span>
-                            <span class="badge">AI Search Engine</span>
-                        </div>
-                        <div class="rating">★ 4.8 / 5.0 — Research</div>
-                        <p class="tool-desc">An answer engine that combines real-time web search with AI summarization and clear source citations.</p>
-                        <ul class="features-list">
-                            <li>Real-time web sources & links</li>
-                            <li>Pro search deep research</li>
-                            <li>Clean, ad-free interface</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="btn-affiliate" id="perplexity-link">Try Perplexity →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Jasper AI</span>
-                            <span class="badge">Marketing Copy</span>
-                        </div>
-                        <div class="rating">★ 4.7 / 5.0 — Brand Writing</div>
-                        <p class="tool-desc">AI copilot tailored for marketing teams, creating on-brand blog posts, ad copy, emails, and social campaigns.</p>
-                        <ul class="features-list">
-                            <li>Brand voice customization</li>
-                            <li>Marketing campaign workflows</li>
-                            <li>SEO optimization tools</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.jasper.ai" target="_blank" rel="noopener" class="btn-affiliate" id="jasper-link">Explore Jasper AI →</a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- KATEGORIE 6: CODING & CUSTOM -->
-        <div class="category-block" id="coding">
-            <h2 class="category-title">💻 Coding & Custom AI</h2>
-            <div class="tools-grid">
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">GitHub Copilot / Cursor</span>
-                            <span class="badge">AI Coding</span>
-                        </div>
-                        <div class="rating">★ 4.9 / 5.0 — Developer AI</div>
-                        <p class="tool-desc">AI pair programmer that auto-completes code, writes tests, and refactors logic inside your IDE.</p>
-                        <ul class="features-list">
-                            <li>Context-aware code completion</li>
-                            <li>Multi-language support</li>
-                            <li>In-editor AI chat assistant</li>
-                        </ul>
-                    </div>
-                    <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="btn-affiliate" id="copilot-link">Try GitHub Copilot →</a>
-                </div>
-
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <span class="tool-name">Pickaxe</span>
-                            <span class="badge">No-Code Bots</span>
-                        </div>
-                        <div class="rating">★ 4.7 / 5.0 — AI Builder</div>
-                        <p class="tool-desc">No-code platform to build custom AI bots and embed them directly into websites or charge subscriptions.</p>
-                        <ul class="features-list">
-                            <li>No coding required</li>
-                            <li>Custom document training</li>
-                            <li>Embed bots on any website</li>
-                        </ul>
-                    </div>
-                    <a href="https://www.pickaxe.co" target="_blank" rel="noopener" class="btn-affiliate" id="pickaxe-link">Build Bots with Pickaxe →</a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="trust-section">
-            <h3>Why Trust AI Tool Scout?</h3>
-            <p style="color: var(--text-muted); margin-top: 10px;">We rigorously evaluate dozens of artificial intelligence platforms every month. Our goal is to highlight only high-performing, verified software that provides real productivity value for creators, agencies, and online businesses.</p>
-        </div>
-
+        <div class="grid" id="popular-grid"></div>
+      </section>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Get A Tool Scout (getaitoolscout.com). All rights reserved.</p>
-        <p style="margin-top: 8px; font-size: 0.75rem;">Disclosure: Some links on this site are affiliate links. If you make a purchase through them, we may receive a small commission at no additional cost to you.</p>
-    </footer>
+    <!-- DIRECTORY VIEW -->
+    <div id="dir-view" hidden>
+      <header class="page-head">
+        <div>
+          <p class="eyebrow">Directory</p>
+          <h1 id="dir-title">All AI Tools</h1>
+          <p id="dir-desc"></p>
+        </div>
+        <div class="search" id="search-wrap" role="search">
+          <label for="search">Search AI tools</label>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="search" type="search" placeholder="Search for AI tools, categories or use cases…" autocomplete="off">
+          <button class="clear-btn" id="clear-btn" type="button" aria-label="Clear search">&times;</button>
+        </div>
+      </header>
+      <p class="result-line" id="result-line" aria-live="polite"></p>
+      <div id="content"></div>
+    </div>
 
+  </div>
+
+  <footer>
+    <p>&copy; 2026 AI Tool Scout (getaitoolscout.com). Independent directory.</p>
+    <p>Disclosure: some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
+  </footer>
+</div>
+
+<script>
+/* ---------- Data ----------
+   logo: remote URL carried over from the previous version. Not verified.
+   To use a local file instead, save it in /logos and set logo: "logos/name.svg".
+   If a logo fails to load, a letter tile is shown.
+   popular: true puts the tool in "Popular AI Tools" on the homepage. */
+const categories = [
+  { name: "Writing & Content", blurb: "Assistants and writing tools for drafting, editing and summarizing text." },
+  { name: "Image Generation & Design", blurb: "Tools for creating images and designing graphics." },
+  { name: "Video & Animation", blurb: "Tools for generating and editing video." },
+  { name: "Voice & Audio", blurb: "Tools for generating and processing speech and audio." },
+  { name: "Presentations", blurb: "Tools for building slide decks and similar documents." },
+  { name: "Productivity & Business", blurb: "Tools that fit into everyday work, notes and team documents." },
+  { name: "Coding & Development", blurb: "Assistants that help write, read and change code." },
+  { name: "Research & Education", blurb: "Tools for finding sources, answering questions and learning." }
+];
+
+const toolsData = [
+  { name: "ChatGPT", category: "Writing & Content", popular: true,
+    description: "OpenAI's chat assistant. Used for drafting and editing text, summarizing documents, answering questions and help with code.",
+    keywords: "chatbot assistant openai write email essay",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg", link: "https://chatgpt.com" },
+  { name: "Claude", category: "Writing & Content", popular: true,
+    description: "Anthropic's AI assistant. Handles writing, analysis and questions about long documents, and also helps with code.",
+    keywords: "chatbot assistant anthropic write summarize documents",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg", link: "https://claude.ai" },
+  { name: "Jasper", category: "Writing & Content",
+    description: "Writing platform aimed at marketing teams. Drafts blog posts, ads and social posts, and can follow a brand voice.",
+    keywords: "marketing copy blog social ads brand",
+    logo: "https://assets-global.website-files.com/60e5f2de0110ea61a2080a22/611b8b80b2a75c1c0d512a88_Jasper_Mark_Color.svg", link: "https://www.jasper.ai" },
+
+  { name: "Midjourney", category: "Image Generation & Design", popular: true,
+    description: "Creates images from text prompts. Commonly used for concept art, illustration and marketing visuals.",
+    keywords: "image generator art illustration picture text to image",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png", link: "https://www.midjourney.com" },
+  { name: "Canva", category: "Image Generation & Design", popular: true,
+    description: "Online design tool for social posts, presentations and print. Includes AI features such as background removal and image editing.",
+    keywords: "graphic design templates social media poster logo magic studio",
+    logo: "https://cdn.worldvectorlogo.com/logos/canva-1.svg", link: "https://www.canva.com" },
+  { name: "Adobe Firefly", category: "Image Generation & Design",
+    description: "Adobe's generative AI for creating and editing images, including generative fill and vector graphics. Works alongside Adobe apps.",
+    keywords: "adobe firefly generative fill vector illustrator photoshop image generator",
+    link: "https://www.adobe.com/products/firefly.html" },
+
+  { name: "Runway", category: "Video & Animation",
+    description: "Generates and edits video from text, images or existing footage. Aimed at filmmakers and video creators.",
+    keywords: "video generator film clips text to video motion gen-2",
+    logo: "https://runwayml.com/favicon.ico", link: "https://runwayml.com" },
+  { name: "CapCut", category: "Video & Animation", popular: true,
+    description: "Video editor for desktop and web with automatic captions, background removal and text-to-speech. Popular for short-form video.",
+    keywords: "video editor captions subtitles shorts reels tiktok",
+    logo: "https://lf16-capcut-tb.capcut.com/obj/capcut-online-tb/resource/image/icon_capcut.png", link: "https://www.capcut.com" },
+  { name: "HeyGen", category: "Video & Animation",
+    description: "Creates videos with AI avatars from a script, and can translate existing videos into other languages.",
+    keywords: "avatar presenter spokesperson video translation dubbing talking head",
+    link: "https://www.heygen.com" },
+
+  { name: "ElevenLabs", category: "Voice & Audio", popular: true,
+    description: "Turns text into spoken audio and can clone voices. Used for voiceovers, narration and audiobooks.",
+    keywords: "text to speech tts voice cloning narration voiceover audiobook",
+    logo: "https://cdn.worldvectorlogo.com/logos/elevenlabs.svg", link: "https://elevenlabs.io" },
+  { name: "Murf", category: "Voice & Audio",
+    description: "Turns scripts into voiceovers with a library of AI voices. Used for narration in videos, presentations and training material.",
+    keywords: "murf.ai text to speech voiceover narration studio",
+    link: "https://murf.ai" },
+  { name: "Suno", category: "Voice & Audio",
+    description: "Generates songs, with vocals and instruments, from a text description of the style or from your own lyrics.",
+    keywords: "suno ai music generator song lyrics composer",
+    link: "https://suno.com" },
+
+  { name: "Gamma", category: "Presentations", popular: true,
+    description: "Builds slide decks, documents and simple web pages from a text prompt. Useful for getting a first draft of a presentation.",
+    keywords: "slides deck powerpoint pitch presentation maker gamma app",
+    logo: "https://gamma.app/favicon.ico", link: "https://gamma.app" },
+  { name: "Beautiful.ai", category: "Presentations",
+    description: "Presentation software that applies design rules to your slides, so layouts stay tidy as you add and edit content.",
+    keywords: "slides deck powerpoint smart templates presentation maker",
+    link: "https://www.beautiful.ai" },
+
+  { name: "Notion AI", category: "Productivity & Business",
+    description: "AI features inside the Notion workspace. Summarizes notes, answers questions about your pages and drafts documents.",
+    keywords: "notes workspace wiki documentation summarize team",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg", link: "https://www.notion.so" },
+
+  { name: "GitHub Copilot", category: "Coding & Development",
+    description: "Suggests code as you type and answers questions inside code editors. Made for developers working in existing projects.",
+    keywords: "programming autocomplete ide developer refactor code assistant",
+    logo: "https://github.githubassets.com/assets/copilot-logo-6ef4d4ef7bf8.svg", link: "https://github.com/features/copilot" },
+  { name: "Cursor", category: "Coding & Development",
+    description: "Code editor with a built-in AI assistant that answers questions about your project and edits code for you.",
+    keywords: "cursor ai code editor ide programming developer",
+    link: "https://cursor.com" },
+  { name: "Pickaxe", category: "Coding & Development",
+    description: "Lets you build and publish your own AI chatbots and tools without writing code. Suited to non-developers.",
+    keywords: "no-code bot builder chatbot custom ai app agent",
+    link: "https://pickaxe.co" },
+
+  { name: "Perplexity", category: "Research & Education", popular: true,
+    description: "Search tool that answers questions in plain language and lists the web sources it used. Useful for quick research.",
+    keywords: "search engine answers citations sources study learn perplexity ai",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Perplexity_AI_logo.svg", link: "https://www.perplexity.ai" }
+];
+
+/* ---------- State ----------
+   Routes (location.hash): "" or #home = homepage, #all = full directory, #<category-slug> = one category. */
+const ALL = "All AI Tools";
+let view = "home";
+let activeCat = ALL;
+let query = "";
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const slug = s => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/* ---------- Sidebar ---------- */
+function buildSidebar() {
+  const items = [{ name: ALL, count: toolsData.length }]
+    .concat(categories.map(c => ({ name: c.name, count: toolsData.filter(t => t.category === c.name).length })));
+  $("cat-list").innerHTML = items.map(i =>
+    `<li><button class="cat-btn" type="button" data-cat="${esc(i.name)}"><span>${esc(i.name)}</span><span class="cat-count">${i.count}</span></button></li>`
+  ).join("");
+}
+
+function markActive() {
+  $("nav-home-btn").setAttribute("aria-current", view === "home" ? "true" : "false");
+  document.querySelectorAll("#cat-list .cat-btn").forEach(b =>
+    b.setAttribute("aria-current", view === "dir" && b.dataset.cat === activeCat ? "true" : "false"));
+}
+
+/* ---------- Cards ---------- */
+function logoHTML(t) {
+  const letter = esc(t.name.trim().charAt(0).toUpperCase());
+  if (!t.logo) return `<span class="mono" aria-hidden="true">${letter}</span>`;
+  return `<img src="${esc(t.logo)}" alt="${esc(t.name)} logo" loading="lazy" decoding="async" data-letter="${letter}">`;
+}
+
+function cardHTML(t) {
+  return `<article class="card">
+    <div class="card-top">
+      <div class="logo">${logoHTML(t)}</div>
+      <div class="card-id">
+        <h3 class="card-name" title="${esc(t.name)}">${esc(t.name)}</h3>
+        <p class="card-cat">${esc(t.category)}</p>
+      </div>
+    </div>
+    <p class="card-desc">${esc(t.description)}</p>
+    <a class="btn" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${esc(t.name)} website (opens in a new tab)">
+      Visit Website
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </a>
+  </article>`;
+}
+
+/* ---------- Filtering ---------- */
+function matches(t) {
+  if (activeCat !== ALL && t.category !== activeCat) return false;
+  if (!query) return true;
+  const hay = (t.name + " " + t.category + " " + t.description + " " + (t.keywords || "")).toLowerCase();
+  return query.split(/\s+/).every(w => hay.includes(w));
+}
+
+function renderHome() {
+  $("popular-grid").innerHTML = toolsData.filter(t => t.popular).map(cardHTML).join("");
+}
+
+function renderDirectory() {
+  const found = toolsData.filter(matches);
+  const content = $("content");
+  const line = $("result-line");
+
+  const scope = activeCat === ALL ? "" : ` in ${activeCat}`;
+  const q = query ? ` for “${query}”` : "";
+  line.textContent = found.length
+    ? `${found.length} ${found.length === 1 ? "tool" : "tools"}${scope}${q}`
+    : "";
+
+  if (!found.length) {
+    const both = activeCat !== ALL && query;
+    content.innerHTML = `<div class="empty">
+      <h2>No tools found</h2>
+      <p>${query ? `Nothing matches “${esc(query)}”${activeCat === ALL ? "" : " in " + esc(activeCat)}. Check the spelling or try a broader word such as “video” or “writing”.` : "There are no tools in this category yet."}</p>
+      <button class="btn-outline" type="button" id="reset-btn">${both ? "Search all categories" : "Clear search"}</button>
+    </div>`;
+    $("reset-btn").onclick = () => { if (both) { go(slug("all")); } else { setQuery(""); } };
+    return;
+  }
+
+  const groups = categories.filter(c => found.some(t => t.category === c.name));
+  if (activeCat === ALL) {
+    content.innerHTML = groups.map(c => {
+      const list = found.filter(t => t.category === c.name);
+      return `<section class="cat-section" aria-labelledby="h-${slug(c.name)}">
+        <div class="cat-head"><h2 id="h-${slug(c.name)}">${esc(c.name)}</h2><span class="n">${list.length}</span></div>
+        <p class="cat-blurb">${esc(c.blurb)}</p>
+        <div class="grid">${list.map(cardHTML).join("")}</div>
+      </section>`;
+    }).join("");
+  } else {
+    /* The page heading above already names the category, so only the grid is shown. */
+    content.innerHTML = `<section class="cat-section" aria-label="${esc(activeCat)}">
+      <div class="grid">${found.map(cardHTML).join("")}</div>
+    </section>`;
+  }
+}
+
+/* Logo fallback: replace a broken image with a letter tile */
+document.addEventListener("error", e => {
+  const img = e.target;
+  if (img.tagName === "IMG" && img.dataset.letter) {
+    const span = document.createElement("span");
+    span.className = "mono";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = img.dataset.letter;
+    img.replaceWith(span);
+  }
+}, true);
+
+/* ---------- Routing ---------- */
+function route() {
+  const h = location.hash.replace(/^#/, "");
+  if (h === "" || h === "home") {
+    view = "home";
+  } else if (h === "all") {
+    view = "dir"; activeCat = ALL;
+  } else {
+    const c = categories.find(x => slug(x.name) === h);
+    if (c) { view = "dir"; activeCat = c.name; } else { view = "home"; }
+  }
+  $("home-view").hidden = view !== "home";
+  $("dir-view").hidden = view !== "dir";
+  if (view === "dir") {
+    const c = categories.find(x => x.name === activeCat);
+    $("dir-title").textContent = activeCat;
+    $("dir-desc").textContent = c
+      ? c.blurb
+      : "Browse all AI tools by category, or search by name, category or purpose. Each entry links to the official website.";
+    renderDirectory();
+  }
+  markActive();
+  document.title = view === "home"
+    ? "AI Tool Scout – Find the Best AI Tools for Your Needs"
+    : (activeCat === ALL ? "All AI Tools" : activeCat) + " – AI Tool Scout";
+  window.scrollTo({ top: 0 });
+}
+
+/* Navigate to a route name: "home", "all" or a category slug */
+function go(target) {
+  const next = "#" + target;
+  if (location.hash === next || (target === "home" && location.hash === "")) route();
+  else location.hash = next;
+  closeDrawer();
+}
+
+function setQuery(v) {
+  query = v.toLowerCase().trim();
+  $("search").value = v;
+  $("search-wrap").classList.toggle("has-value", !!v);
+  if (view === "dir") renderDirectory();
+}
+
+/* ---------- Events ---------- */
+/* Logo and brand name: always back to the homepage, with search cleared */
+document.querySelectorAll("[data-home]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  setQuery(""); $("hero-search").value = "";
+  go("home");
+}));
+$("nav-home-btn").addEventListener("click", () => go("home"));
+
+$("cat-list").addEventListener("click", e => {
+  const b = e.target.closest(".cat-btn");
+  if (!b) return;
+  go(b.dataset.cat === ALL ? "all" : slug(b.dataset.cat));
+});
+
+document.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  go(a.dataset.go);
+}));
+
+$("hero-form").addEventListener("submit", e => {
+  e.preventDefault();
+  setQuery($("hero-search").value);
+  go("all");
+});
+
+$("search").addEventListener("input", e => setQuery(e.target.value));
+$("clear-btn").addEventListener("click", () => { setQuery(""); $("search").focus(); });
+
+window.addEventListener("hashchange", route);
+
+/* Drawer (mobile) */
+function openDrawer() { $("sidebar").classList.add("open"); $("scrim").classList.add("show"); $("menu-btn").setAttribute("aria-expanded", "true"); }
+function closeDrawer() { $("sidebar").classList.remove("open"); $("scrim").classList.remove("show"); $("menu-btn").setAttribute("aria-expanded", "false"); }
+$("menu-btn").addEventListener("click", () => $("sidebar").classList.contains("open") ? closeDrawer() : openDrawer());
+$("scrim").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+/* Init */
+buildSidebar();
+renderHome();
+route();
+</script>
 </body>
 </html>
