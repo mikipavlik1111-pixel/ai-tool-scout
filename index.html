@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Tool Scout – Find the Best AI Tools for Your Needs</title>
-<meta name="description" content="AI Tool Scout helps you discover useful AI tools for work, creativity and everyday tasks. Browse categories and find the right tool.">
+<meta name="description" content="AI Tool Scout helps you discover useful AI tools for work, creativity and everyday tasks. Browse categories, compare tools, and find the right solution.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317493f'/%3E%3Ccircle cx='14' cy='14' r='6.5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M19 19l6.5 6.5' stroke='%23fff' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M14 10.3l1.2 2.5 2.5 1.2-2.5 1.2L14 17.7l-1.2-2.5-2.5-1.2 2.5-1.2z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -28,13 +28,13 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 button,input{font:inherit;color:inherit}
-a{color:inherit}
+a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 [hidden]{display:none!important}
 
 /* Sidebar */
 .sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:60;overflow-y:auto}
-.brand{display:flex;align-items:center;gap:10px;padding:22px 20px 18px;text-decoration:none;color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;padding:22px 20px 18px;text-decoration:none;color:var(--ink);cursor:pointer}
 .brand-mark{width:32px;height:32px;flex:none;display:block}
 .brand-name{font-weight:700;font-size:18px;letter-spacing:-.01em}
 .nav-label{padding:10px 20px 8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
@@ -52,11 +52,11 @@ a{color:inherit}
 .mobile-bar{display:none}
 .scrim{display:none}
 
-/* Main */
+/* Main Layout */
 .main{margin-left:var(--sidebar-w);min-height:100vh;display:flex;flex-direction:column}
 .main-inner{width:100%;max-width:1180px;padding:40px 40px 56px;flex:1}
 
-/* Homepage */
+/* Homepage Hero & Features */
 .hero{padding:16px 0 48px;border-bottom:1px solid var(--line-strong)}
 .hero h1{font-size:40px;line-height:1.15;letter-spacing:-.025em;font-weight:700;max-width:720px}
 .hero p{margin-top:16px;color:var(--ink-2);font-size:17px;line-height:1.6;max-width:680px}
@@ -81,7 +81,7 @@ a{color:inherit}
 .benefit h3{font-size:16px;font-weight:600;margin-bottom:8px}
 .benefit p{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
 
-/* Directory */
+/* Directory Header & Search */
 .page-head{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end;padding-bottom:24px;border-bottom:1px solid var(--line-strong)}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
 .page-head h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700}
@@ -98,7 +98,7 @@ a{color:inherit}
 
 .result-line{margin:20px 0 4px;font-size:14px;color:var(--ink-3)}
 
-/* Category sections */
+/* Category Sections */
 .cat-section{padding-top:36px}
 .cat-section:first-of-type{padding-top:20px}
 .cat-section+.cat-section{margin-top:36px;border-top:1px solid var(--line-strong)}
@@ -107,7 +107,7 @@ a{color:inherit}
 .cat-head .n{font-size:14px;color:var(--ink-3)}
 .cat-blurb{color:var(--ink-2);font-size:14.5px;margin-bottom:20px;max-width:640px}
 
-/* Grid and cards */
+/* Grid & Tool Cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;height:244px;display:grid;grid-template-rows:48px 1fr 40px;gap:14px}
 .card:hover{border-color:var(--line-strong)}
@@ -123,7 +123,7 @@ a{color:inherit}
 .btn:hover{background:var(--accent-hover)}
 .btn svg{flex:none}
 
-/* Empty */
+/* Empty State */
 .empty{margin-top:28px;padding:56px 24px;text-align:center;background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--radius)}
 .empty h2{font-size:18px;margin-bottom:6px}
 .empty p{color:var(--ink-2);font-size:14.5px;max-width:420px;margin:0 auto 18px}
@@ -133,7 +133,7 @@ a{color:inherit}
 footer{border-top:1px solid var(--line);padding:22px 40px;font-size:13px;color:var(--ink-3);background:var(--surface)}
 footer p+p{margin-top:4px}
 
-/* Tablet and mobile */
+/* Mobile Responsiveness */
 @media (max-width:1100px){
   .benefits{grid-template-columns:repeat(2,1fr)}
 }
@@ -164,12 +164,11 @@ footer p+p{margin-top:4px}
 @media (max-width:480px){
   .grid{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<!-- Logo symbol: magnifier with a four-point spark. Colors: --accent and white. -->
+<!-- Logo symbol SVG definition -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="logo-mark" viewBox="0 0 32 32">
     <rect width="32" height="32" rx="7" fill="#17493f"/>
@@ -181,6 +180,7 @@ footer p+p{margin-top:4px}
 
 <div class="scrim" id="scrim"></div>
 
+<!-- Left Sidebar Navigation -->
 <aside class="sidebar" id="sidebar" aria-label="Site navigation">
   <a class="brand" href="#home" data-home aria-label="AI Tool Scout – go to homepage">
     <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
@@ -195,6 +195,7 @@ footer p+p{margin-top:4px}
   <p class="sidebar-note">An independent directory. Each listing links to the tool's own website.</p>
 </aside>
 
+<!-- Mobile Navigation Bar -->
 <div class="mobile-bar">
   <a class="brand" href="#home" data-home aria-label="AI Tool Scout – go to homepage">
     <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
@@ -248,8 +249,8 @@ footer p+p{margin-top:4px}
       <header class="page-head">
         <div>
           <p class="eyebrow">Directory</p>
-          <h1 id="dir-title">All AI Tools</h1>
-          <p id="dir-desc"></p>
+          <h1>Directory of AI tools</h1>
+          <p>Find AI tools by category or by what you need to get done. Each entry has a short description and a link to the official site.</p>
         </div>
         <div class="search" id="search-wrap" role="search">
           <label for="search">Search AI tools</label>
@@ -266,16 +267,12 @@ footer p+p{margin-top:4px}
 
   <footer>
     <p>&copy; 2026 AI Tool Scout (getaitoolscout.com). Independent directory.</p>
-    <p>Disclosure: some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
+    <p>Disclosure: Some links on this site may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you.</p>
   </footer>
 </div>
 
 <script>
-/* ---------- Data ----------
-   logo: remote URL carried over from the previous version. Not verified.
-   To use a local file instead, save it in /logos and set logo: "logos/name.svg".
-   If a logo fails to load, a letter tile is shown.
-   popular: true puts the tool in "Popular AI Tools" on the homepage. */
+/* ---------- Data ---------- */
 const categories = [
   { name: "Writing & Content", blurb: "Assistants and writing tools for drafting, editing and summarizing text." },
   { name: "Image Generation & Design", blurb: "Tools for creating images and designing graphics." },
@@ -373,8 +370,7 @@ const toolsData = [
     logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Perplexity_AI_logo.svg", link: "https://www.perplexity.ai" }
 ];
 
-/* ---------- State ----------
-   Routes (location.hash): "" or #home = homepage, #all = full directory, #<category-slug> = one category. */
+/* ---------- State ---------- */
 const ALL = "All AI Tools";
 let view = "home";
 let activeCat = ALL;
@@ -399,7 +395,7 @@ function markActive() {
     b.setAttribute("aria-current", view === "dir" && b.dataset.cat === activeCat ? "true" : "false"));
 }
 
-/* ---------- Cards ---------- */
+/* ---------- Card & Logo Helpers ---------- */
 function logoHTML(t) {
   const letter = esc(t.name.trim().charAt(0).toUpperCase());
   if (!t.logo) return `<span class="mono" aria-hidden="true">${letter}</span>`;
@@ -416,14 +412,26 @@ function cardHTML(t) {
       </div>
     </div>
     <p class="card-desc">${esc(t.description)}</p>
-    <a class="btn" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${esc(t.name)} website (opens in a new tab)">
+    <a class="btn" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${esc(t.name)} website">
       Visit Website
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
     </a>
   </article>`;
 }
 
-/* ---------- Filtering ---------- */
+/* Fallback for broken images */
+document.addEventListener("error", e => {
+  const img = e.target;
+  if (img.tagName === "IMG" && img.dataset.letter) {
+    const span = document.createElement("span");
+    span.className = "mono";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = img.dataset.letter;
+    img.replaceWith(span);
+  }
+}, true);
+
+/* ---------- Filtering & Rendering ---------- */
 function matches(t) {
   if (activeCat !== ALL && t.category !== activeCat) return false;
   if (!query) return true;
@@ -468,24 +476,14 @@ function renderDirectory() {
       </section>`;
     }).join("");
   } else {
-    /* The page heading above already names the category, so only the grid is shown. */
-    content.innerHTML = `<section class="cat-section" aria-label="${esc(activeCat)}">
+    const c = categories.find(x => x.name === activeCat);
+    content.innerHTML = `<section class="cat-section" aria-labelledby="h-cat">
+      <div class="cat-head"><h2 id="h-cat">${esc(c.name)}</h2></div>
+      <p class="cat-blurb">${esc(c.blurb)}</p>
       <div class="grid">${found.map(cardHTML).join("")}</div>
     </section>`;
   }
 }
-
-/* Logo fallback: replace a broken image with a letter tile */
-document.addEventListener("error", e => {
-  const img = e.target;
-  if (img.tagName === "IMG" && img.dataset.letter) {
-    const span = document.createElement("span");
-    span.className = "mono";
-    span.setAttribute("aria-hidden", "true");
-    span.textContent = img.dataset.letter;
-    img.replaceWith(span);
-  }
-}, true);
 
 /* ---------- Routing ---------- */
 function route() {
@@ -500,14 +498,7 @@ function route() {
   }
   $("home-view").hidden = view !== "home";
   $("dir-view").hidden = view !== "dir";
-  if (view === "dir") {
-    const c = categories.find(x => x.name === activeCat);
-    $("dir-title").textContent = activeCat;
-    $("dir-desc").textContent = c
-      ? c.blurb
-      : "Browse all AI tools by category, or search by name, category or purpose. Each entry links to the official website.";
-    renderDirectory();
-  }
+  if (view === "dir") renderDirectory();
   markActive();
   document.title = view === "home"
     ? "AI Tool Scout – Find the Best AI Tools for Your Needs"
@@ -515,7 +506,6 @@ function route() {
   window.scrollTo({ top: 0 });
 }
 
-/* Navigate to a route name: "home", "all" or a category slug */
 function go(target) {
   const next = "#" + target;
   if (location.hash === next || (target === "home" && location.hash === "")) route();
@@ -531,7 +521,6 @@ function setQuery(v) {
 }
 
 /* ---------- Events ---------- */
-/* Logo and brand name: always back to the homepage, with search cleared */
 document.querySelectorAll("[data-home]").forEach(a => a.addEventListener("click", e => {
   e.preventDefault();
   setQuery(""); $("hero-search").value = "";
